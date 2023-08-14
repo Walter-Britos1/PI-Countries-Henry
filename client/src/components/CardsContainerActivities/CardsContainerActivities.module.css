@@ -1,0 +1,22 @@
+.activitiesContainer {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.noActivitiesMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  /* Establece la altura completa de la pantalla */
+  font-size: 1.5rem;
+  color: #555;
+}

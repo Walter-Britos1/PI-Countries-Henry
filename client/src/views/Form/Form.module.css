@@ -1,0 +1,71 @@
+.formContainer {
+  width: 540px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  display: flex; /* Usamos Flexbox */
+  align-items: center; /* Centra verticalmente los elementos */
+}
+
+.formContainer h1 {
+  font-size: 24px;
+  margin-right: 20px; /* Espacio entre el título y los campos */
+  font-weight: bold;
+}
+
+.formContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.inputField,
+.selectField {
+  padding: 12px;
+  margin-bottom: 9px;
+  margin-right: 0;
+  border: 1px solid #ccc;
+  border-radius: 13px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.button {
+  background-color: #444;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 13px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+  margin-top: 20px
+}
+
+.button:hover {
+  background-color: #5c5b5b;
+}
+
+.alert {
+  flex-direction: column;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  margin: 50px;
+  text-align: center;
+  border-radius: 13px;
+}
+
+
+.errorAlert {
+  width: 120px;
+  background-color: rgb(245, 40, 40);
+  color: white;
+  padding: 10px;
+  margin: 50px;
+  text-align: center;
+  border-radius: 13px;
+}
