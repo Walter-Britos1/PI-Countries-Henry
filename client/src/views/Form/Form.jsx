@@ -7,7 +7,7 @@ import { validateActivityForm } from './validation'
 
 import styles from './Form.module.css';
 
-const CrearActivity = () => {
+const CreateActivity = () => {
    // Estados para almacenar los datos del formulario y manejo de estados
   const [name, setName] = useState('');
   const [difficulty, setDifficulty] = useState('');
@@ -197,4 +197,4 @@ const CrearActivity = () => {
   );
 };
 
-export default CrearActivity;
+export default CreateActivity;
