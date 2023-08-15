@@ -1,12 +1,13 @@
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentPage } from '../../redux/actions';
-import { applyFiltersAndSorting } from '../../utils/utils';
-import { calculatePaginatedItems } from '../../utils/utils';
-import Card from "../Card/Card";
-import styles from './CardsContainer.module.css'
+import {
+  applyFiltersAndSorting,
+  calculatePaginatedItems,
+} from './utils';
+import Card from '../Card/Card';
+import styles from './CardsContainer.module.css';
 
 const CardsCountries = () => {
-
   const dispatch = useDispatch();
 
   // Obtener la página actual del estado global
@@ -24,12 +25,11 @@ const CardsCountries = () => {
     (state) => state.selectedPopulationFilter
   );
 
-
   // Mover la lógica de filtrado y ordenamiento a la función applyFiltersAndSorting
   const filteredCountries = applyFiltersAndSorting(
     countries,
     selectedContinent,
-    selectedPopulationFilter,
+    selectedPopulationFilter
   );
 
   // Calcular la lista de países paginados usando la función calculatePaginatedItems
@@ -44,43 +44,38 @@ const CardsCountries = () => {
     dispatch(setCurrentPage(pageNumber));
   };
 
-
-
   // Calcular el número total de páginas
   const totalPages = Math.ceil(filteredCountries.length / countriesPerPage);
 
-
   return (
     <>
-    <div className={styles.cardContainer}>
-       {/* Mapear y renderizar las tarjetas de país para cada país en la lista filtrada */}
-      {paginatedCountries.map((country) => {
-        return (
-          <Card
-            key={country.id}
-            idPais={country.id}
-            flag={country.flag}
-            name={country.name}
-            continent={country.continent}
-          />
-        );
-      })}
-          
-    </div>
-     <div className={styles.pagination}>
-     {Array.from({ length: totalPages }, (_, index) => (
-       <button
-         key={index}
-         className={currentPage === index + 1 ? styles.activePage : ''}
-         onClick={() => handlePageChange(index + 1)}
-       >
-         {index + 1}
-       </button>
-     ))}
-   </div>
-   </>
+      <div className={styles.cardContainer}>
+        {/* Mapear y renderizar las tarjetas de país para cada país en la lista filtrada */}
+        {paginatedCountries.map((country) => {
+          return (
+            <Card
+              key={country.id}
+              idPais={country.id}
+              flag={country.flag}
+              name={country.name}
+              continent={country.continent}
+            />
+          );
+        })}
+      </div>
+      <div className={styles.pagination}>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index}
+            className={currentPage === index + 1 ? styles.activePage : ''} // Aplica una clase si la página actual coincide con el índice
+            onClick={() => handlePageChange(index + 1)} // Maneja el cambio de página al hacer clic en el botón
+          >
+            {index + 1} {/* Muestra el número de página */}
+          </button>
+        ))}
+      </div>
+    </>
   );
 };
 
 export default CardsCountries;
-

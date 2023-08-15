@@ -8,6 +8,7 @@ import { validateActivityForm } from './validation'
 import styles from './Form.module.css';
 
 const CrearActivity = () => {
+   // Estados para almacenar los datos del formulario y manejo de estados
   const [name, setName] = useState('');
   const [difficulty, setDifficulty] = useState('');
   const [duration, setDuration] = useState('');
@@ -20,7 +21,7 @@ const CrearActivity = () => {
 
   const dispatch = useDispatch();
 
-  // Obtener la lista de los paises
+  // Obtener la lista de los países al cargar el componente
   useEffect(() => {
     axios
       .get('http://localhost:3001/countries')
@@ -30,6 +31,7 @@ const CrearActivity = () => {
       .catch((err) => console.log('ERROR', err));
   }, []);
 
+  // Temporizador para mostrar y ocultar alertas de éxito
   useEffect(() => {
     let timer;
     if (showAlert) {
@@ -41,6 +43,7 @@ const CrearActivity = () => {
     }
   }, [showAlert]);
 
+  // Temporizador para mostrar y ocultar alertas de errores
   useEffect(() => {
     let timerErr;
     if(errors) {
@@ -51,14 +54,12 @@ const CrearActivity = () => {
     }
   })
 
-
+  // Función para manejar el envío del formulario
   const handlerSubmit = (event) => {
     event.preventDefault();
 
-    // Necesitamos una referencia del formulario
+    // Obtener los valores del formulario
     const form = event.target;
-
-    // Necesitamos obtener los valores de los input del formulario
     const name = form.name.value;
     const difficulty = form.difficulty.value;
     const duration = form.duration.value;
@@ -81,6 +82,7 @@ const CrearActivity = () => {
       return;
     }
 
+    // Crear objeto con los datos de la actividad
     const activityData = {
       name,
       difficulty,
@@ -89,10 +91,11 @@ const CrearActivity = () => {
       countries,
     };
 
+    // Enviar datos al store de Redux
     dispatch(addActivity(activityData));
 
+    // Mostrar alerta de éxito y reiniciar valores del formulario
     setShowAlert(true);
-
     setName('');
     setDifficulty('');
     setDuration('');
@@ -103,6 +106,7 @@ const CrearActivity = () => {
   return (
     <div className={styles.formContainer}>
       <form onSubmit={handlerSubmit}>
+        {/* ... Renderizar los campos del formulario */}
         <h1>Create Activity</h1>
         <label className={styles.label}>Name Activity:</label>
         <input
@@ -180,7 +184,7 @@ const CrearActivity = () => {
         </button>
 
       </form>
-          
+      {/* Mostrar mensajes de error y éxito */}
     {errors.name && <span className={styles.errorAlert}>{errors.name}</span>}
     {errors.difficulty && <span className={styles.errorAlert}>{errors.difficulty}</span>}
     {errors.duration && <span className={styles.errorAlert}>{errors.duration}</span>}

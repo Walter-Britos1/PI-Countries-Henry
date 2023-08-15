@@ -44,8 +44,6 @@ const Detail = () => {
     return <div className={styles.container}>{error}</div>;
   }
 
-  console.log(country);
-
   // Formatea la capital eliminando las llaves {}
   const formattedCapital = country[0].capital.replace("{", "").replace("}", "");
 

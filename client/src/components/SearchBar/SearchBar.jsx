@@ -10,6 +10,7 @@ const SearchBar = () => {
   
   const dispatch = useDispatch();
 
+  // Dispactch de la accion para buscar paises por nombre
   const handlerSearch = () => {
     dispatch(searchCountriesByName(searchCountry));
   };
