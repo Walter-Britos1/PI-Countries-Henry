@@ -1,7 +1,9 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Landing, Home, CreateActivity, Detail, Activity } from './views';
+import axios from 'axios';
 import NavBar from './components/NavBar/NavBar';
 
+axios.defaults.baseURL = 'http://localhost:3001/';
 function App() {
   // Obtener la ubicación actual de la ruta
   const location = useLocation();

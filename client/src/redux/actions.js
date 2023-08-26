@@ -21,7 +21,7 @@ export const getCountries = () => {
   return async (dispatch) => {
     try {
       // Hacer una solicitud a la API para obtener todos los países.
-      const api = await axios.get('http://localhost:3001/countries');
+      const api = await axios.get('/countries');
       const countries = api.data;
       // Despachar la acción con los países obtenidos.
       dispatch({
@@ -41,7 +41,7 @@ export const searchCountriesByName = (name) => {
     try {
       if(name === '') alert('Please enter one name country')
       // Hacer una solicitud a la API para buscar países por nombre.
-      const api = await axios.get(`http://localhost:3001/countries?name=${name}`)
+      const api = await axios.get(`/countries?name=${name}`)
       const filteredCountries = api.data;
       // Despachar la acción con los países filtrados por nombre.
       dispatch({
@@ -97,7 +97,7 @@ export const resetFiltersAndSort = () => ({
 export const addActivity = (activityData) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post('http://localhost:3001/activities', activityData);
+      const response = await axios.post('/activities', activityData);
       const activityCreated = response.data;
       // Despachar la acción para agregar actividades.
       dispatch({
@@ -116,7 +116,7 @@ export const getActivities = () => {
   return async (dispatch) => {
     try {
       // Hacer una solicitud a la API para obtener todas las actividades.
-      const api = await axios.get('http://localhost:3001/activities');
+      const api = await axios.get('/activities');
       const activities = api.data;
       // Despachar la acción con las actividades obtenidas.
       dispatch({
@@ -141,7 +141,7 @@ export const deleteActivity = (id) => {
   return async (dispatch) => {
     try {
       // Realizar la solicitud DELETE al servidor
-      await axios.delete(`http://localhost:3001/activities/${id}`);
+      await axios.delete(`/activities/${id}`);
 
       // Despachar la acción para eliminar la actividad en el estado de Redux
       dispatch({
