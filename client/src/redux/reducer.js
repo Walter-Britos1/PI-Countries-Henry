@@ -9,15 +9,16 @@ import { ADD_ACTIVITY,
   SORT_COUNTRIES_DESCENDING,
   RESET_FILTERS_AND_SORT,
   DELETE_ACTIVITY,
-  SET_CURRENT_PAGE
+  SET_CURRENT_PAGE,
+  SET_SELECTED_SEASON
  } from "./actionsType";
 
 const initialState = {
   countries: [],
-  allCountries: [],
   activities: [],
-  selectedContinent: null,
+  selectedContinent: null,// Agrega el estado del filtro de continentes
   selectedPopulationFilter: null, // Agrega el estado del filtro de población
+  selectedSeason: '',
   sortOrder: 'none',
   currentPage: 1,      // Página actual
   countriesPerPage: 10, // Cantidad de países por página
@@ -31,7 +32,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         countries: payload,
-        allCountries: payload,
       };
 
     // maneja la acción SEARCH_COUNTRIES_BY_NAME para buscar un pais por su nombre
@@ -88,7 +88,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case ADD_ACTIVITY:
       return {
         ...state,
-        activities: payload,
+        activities: [...state.activities, payload]
       };
 
     // maneja la acción GET_ACTIVITIES para obtener todas las actividades del estado:
@@ -97,6 +97,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         activities: payload,
       };
+
+    case SET_SELECTED_SEASON: 
+      return {
+        ...state,
+        selectedSeason: payload
+      }
     
     case DELETE_ACTIVITY:
       return {

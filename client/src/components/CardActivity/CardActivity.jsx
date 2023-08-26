@@ -14,6 +14,9 @@ const CardActivity = ({ id, name, difficulty, duration, season, country }) => {
 
   return (
     <div className={styles.card}>
+      <button className={styles.deleteButton} onClick={handleDelete}>
+        x
+      </button>
       <div className={styles.details}>
         <h3 className={styles.name}>{name}</h3>
         <p className={styles.property}>
@@ -30,11 +33,10 @@ const CardActivity = ({ id, name, difficulty, duration, season, country }) => {
         </p>
         <p className={styles.property}>
           <strong>Country: </strong>
-          <span className={styles.country}>{country ? country.name : 'Unknown'}</span>
+          <span className={styles.country}>
+            {country ? country.name : 'Unknown'}
+          </span>
         </p>
-        <button className={styles.deleteButton} onClick={handleDelete}>
-        Delete Activity
-      </button>
       </div>
     </div>
   );

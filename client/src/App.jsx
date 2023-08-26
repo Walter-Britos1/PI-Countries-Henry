@@ -1,4 +1,4 @@
-import {  Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { Landing, Home, CreateActivity, Detail, Activity } from './views';
 import NavBar from './components/NavBar/NavBar';
 
@@ -6,17 +6,15 @@ function App() {
   // Obtener la ubicación actual de la ruta
   const location = useLocation();
 
-
   return (
     <div>
-
       {
-         /* Mostrar la barra de navegación en todas las rutas, excepto en la página de inicio */
+        /* Mostrar la barra de navegación en todas las rutas, excepto en la página de inicio */
         location.pathname !== '/' && <NavBar />
       }
 
       <Routes>
-        <Route exact={true} path='/' element={<Landing/>}/>
+        <Route exact={true} path='/' element={<Landing />} />
         <Route path='/home' element={<Home />} />
         <Route path='/:idPais' element={<Detail />} />
         <Route path='/form' element={<CreateActivity />} />
@@ -26,4 +24,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

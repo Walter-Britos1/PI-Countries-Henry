@@ -1,0 +1,35 @@
+.filteredActivitiesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra horizontalmente los elementos */
+}
+
+.buttonAndOptions {
+  display: flex;
+  align-items: center; /* Alinea verticalmente los elementos */
+}
+
+.filterButton {
+  margin: 10px;
+  display: flex; /* Hace que el botón sea un contenedor flex */
+  align-items: center; /* Alinea verticalmente el contenido del botón */
+}
+
+.filterButton svg {
+  transition: transform 0.3s ease;
+}
+
+.filterButton[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.selectFilter {
+  height: 25px;
+  border-radius: 10px;
+  outline: none;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  margin-left: 10px; /* Añade un margen izquierdo para separación */
+}

@@ -12,7 +12,8 @@ import {
   SORT_COUNTRIES_DESCENDING,
   RESET_FILTERS_AND_SORT,
   DELETE_ACTIVITY,
-  SET_CURRENT_PAGE 
+  SET_CURRENT_PAGE, 
+  SET_SELECTED_SEASON
 } from './actionsType';
 
 // agregamos una acción para obtener todos los paises.
@@ -128,6 +129,13 @@ export const getActivities = () => {
     }
   }
 };
+
+export const setSelectedSeason = (season) => {
+  return {
+    type : SET_SELECTED_SEASON, 
+    payload: season
+  }
+}
 
 export const deleteActivity = (id) => {
   return async (dispatch) => {

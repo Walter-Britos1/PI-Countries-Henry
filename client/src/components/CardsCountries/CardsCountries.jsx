@@ -14,10 +14,10 @@ const CardsCountries = () => {
   const currentPage = useSelector((state) => state.currentPage);
   const countriesPerPage = useSelector((state) => state.countriesPerPage);
 
-  // // Obtener la lista de países del estado global
+  // Obtener la lista de países del estado global
   const countries = useSelector((state) => state.countries);
 
-  // // Obtener el filtro de continente seleccionado del estado global
+  // Obtener el filtro de continente seleccionado del estado global
   const selectedContinent = useSelector((state) => state.selectedContinent);
 
   // Obtener el filtro de población seleccionado del estado global
@@ -39,6 +39,7 @@ const CardsCountries = () => {
     countriesPerPage
   );
 
+
   // Manejar el cambio de página
   const handlePageChange = (pageNumber) => {
     dispatch(setCurrentPage(pageNumber));
@@ -47,32 +48,47 @@ const CardsCountries = () => {
   // Calcular el número total de páginas
   const totalPages = Math.ceil(filteredCountries.length / countriesPerPage);
 
+     // Agregar lógica para mostrar hasta 5 botones de paginación y botones de página anterior y siguiente
+   const visiblePageNumbers = [];
+   const maxVisiblePages = 5;
+
+   for (let i = Math.max(1, currentPage - 2); i <= Math.min(currentPage + 2, totalPages); i++) {
+    visiblePageNumbers.push(i);
+  }
+
+
   return (
     <>
       <div className={styles.cardContainer}>
-        {/* Mapear y renderizar las tarjetas de país para cada país en la lista filtrada */}
-        {paginatedCountries.map((country) => {
-          return (
-            <Card
-              key={country.id}
-              idPais={country.id}
-              flag={country.flag}
-              name={country.name}
-              continent={country.continent}
-            />
-          );
-        })}
+        {/* Mapear y renderizar las tarjetas de país para cada país en la lista paginada */}
+        {paginatedCountries.map((country) => (
+          <Card
+            key={country.id}
+            idPais={country.id}
+            flag={country.flag}
+            name={country.name}
+            continent={country.continent}
+          />
+        ))}
       </div>
       <div className={styles.pagination}>
-        {Array.from({ length: totalPages }, (_, index) => (
+        {currentPage > 1 && (
+          <button onClick={() => handlePageChange(currentPage - 1)}>Prev...</button>
+        )}
+
+        {visiblePageNumbers.map((pageNumber) => (
           <button
-            key={index}
-            className={currentPage === index + 1 ? styles.activePage : ''} // Aplica una clase si la página actual coincide con el índice
-            onClick={() => handlePageChange(index + 1)} // Maneja el cambio de página al hacer clic en el botón
+            key={pageNumber}
+            className={currentPage === pageNumber ? styles.activePage : ''}
+            onClick={() => handlePageChange(pageNumber)}
           >
-            {index + 1} {/* Muestra el número de página */}
+            {pageNumber}
           </button>
         ))}
+
+        {currentPage < totalPages && (
+          <button onClick={() => handlePageChange(currentPage + 1)}>Next...</button>
+        )}
       </div>
     </>
   );

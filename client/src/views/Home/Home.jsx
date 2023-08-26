@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCountries } from '../../redux/actions';
-import CardsCountries from '../../components/CardsContainer/CardsCountries';
+import CardsCountries from '../../components/CardsCountries/CardsCountries';
+import Filters from '../../components/Filters/Filters';
 
 
 const Home = () => {
@@ -13,11 +14,10 @@ const Home = () => {
   },[dispatch])
 
   return (
-    <>
-    {/* Renderiza el componente CardsCountries para mostrar la lista de países */}
+    <div>
+      <Filters />
       <CardsCountries />
-    </>
-  
+    </div>
   );
 };
 

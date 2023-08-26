@@ -1,13 +1,14 @@
 .card {
-  width: 320px;
-  height: 420px;
+  width: 300px;
+  height: 300px;
+  top: 10px;
   display: flex;
   flex-direction: column;
   position: relative;
   box-shadow: 0px 0px 5px 5px #646161;
   border-radius: 30px;
   text-align: center;
-  /* Centra el contenido horizontalmente */
+  background-color: rgba(177, 176, 176, 0.8);
 }
 
 .details {
@@ -15,14 +16,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* Espacio uniforme entre los detalles */
-  padding: 16px;
+  padding: 15px;
 }
 
 .name {
   font-size: 1.5rem;
   margin-bottom: 8px;
+  margin-top: 20px;
 }
+
 
 .property {
   margin-bottom: 4px;
@@ -59,17 +61,28 @@
   color: #9c27b0;
 }
 
-.image {
-  width: 100%;
-  /* Asegura que la imagen ocupe todo el ancho disponible */
-  height: auto;
-  /* Ajusta la altura de la imagen automáticamente */
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-}
-
 
 .country {
   font-weight: bold;
   color: #9c27b0;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border-radius: 20%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.deleteButton:hover {
+  color: #f44336;
 }

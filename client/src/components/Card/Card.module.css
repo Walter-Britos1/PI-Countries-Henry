@@ -1,6 +1,5 @@
 .card {
   border: 1px solid #ddd;
-  border-radius: 10px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s;
@@ -14,7 +13,6 @@
   width: 100%;
   height: 150px;
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
 }
 
 .card h2 {
@@ -29,17 +27,8 @@
   color: #666;
 }
 
-.card a {
-  display: block;
-  background-color: #42464b;
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  text-align: center;
-  transition: background-color 0.2s;
-  font-size: 1.2rem;
-}
+
+
 
 .card a:hover {
   background-color: #202224;
