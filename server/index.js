@@ -1,4 +1,3 @@
-
 const server = require("./src/server");
 const { conn } = require('./src/db.js');
 const { insertCountryToDB } = require('./src/utils/api')

@@ -5,6 +5,7 @@ const { Country } = require("../db.js");
 const insertCountryToDB  = async () => {
   try {
     // Obtener la lista de países desde la API externa
+    console.log('Fetching data from external API...');
     const response = await axios.get("http://localhost:5000/countries");
     const countriesList = response.data;
 
@@ -25,10 +26,12 @@ const insertCountryToDB  = async () => {
         area: country.area,
         population: country.population,
       };
+      console.log('Processing:', newCountries.name);
       arrayCountries.push(newCountries);
     });
 
     // Insertar los países en la base de datos utilizando bulkCreate
+    console.log('Inserting countries into the database...');
     await Country.bulkCreate(arrayCountries);
     console.log('Inserting successful');
     console.log('Total countries inserting: ', countriesList.length);
